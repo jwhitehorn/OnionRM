@@ -37,7 +37,7 @@
 	"analyse"     : false,
 	"dependencies": {
 		"enforce"      : "0.1.2",
-		"sql-query"    : "git://github.com/waterfield/node-sql-query.git#f0d956c537fa86887428cbbbd83864509b4c5767",
+		"sql-query"    : "git://github.com/waterfield/node-sql-query.git#b1b6c4089198b88dac4a15ea62b942d4b51b8c65",
 		"sql-ddl-sync" : "git+https://github.com/waterfield/node-sql-ddl-sync.git#1e156c9bcfa6dbf8bc098c6e400a508d6c5b0dce",
 		"hat"          : "0.0.3",
 		"lodash"       : "2.4.1"
