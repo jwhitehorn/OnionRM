@@ -155,33 +155,6 @@ describe("Model.find() chaining", function() {
 		});
 	});
 
-	describe("orderRaw", function () {
-
-		before(setup());
-
-		it("should allow ordering by SQL", function (done) {
-			Person.find().orderRaw("age DESC").run(function (err, instances) {
-				should.equal(err, null);
-				instances.should.have.property("length", 3);
-				instances[0].age.should.equal(20);
-				instances[2].age.should.equal(18);
-
-				return done();
-			});
-		});
-
-		it("should allow ordering by SQL with escaping", function (done) {
-			Person.find().orderRaw("?? DESC", ['age']).run(function (err, instances) {
-				should.equal(err, null);
-				instances.should.have.property("length", 3);
-				instances[0].age.should.equal(20);
-				instances[2].age.should.equal(18);
-
-				return done();
-			});
-		});
-	});
-
 	describe("only", function () {
 		before(setup());
 
