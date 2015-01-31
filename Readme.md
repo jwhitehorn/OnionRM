@@ -1,32 +1,14 @@
-## Object Relational Mapping
+## Onion Relational Mapping
 
-[![Build Status](https://api.travis-ci.org/dresende/node-orm2.svg?branch=master)](http://travis-ci.org/dresende/node-orm2)
-[![](https://badge.fury.io/js/orm.svg)](https://npmjs.org/package/orm)
-[![](https://gemnasium.com/dresende/node-orm2.png)](https://gemnasium.com/dresende/node-orm2)
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=dresende&url=https://github.com/dresende/node-orm2&title=ORM&language=&tags=github&category=software)
-
-## Install
-
-```sh
-npm install orm
-```
-
-## Node.js Version Support
-
-Tests are done using [Travis CI](https://travis-ci.org/) for node versions `0.6.x`, `0.8.x` and `0.10.x`. If you want you can run
-tests locally.
-
-```sh
-npm test
-```
+A fork of [node-orm2](https://github.com/dresende/node-orm2).
 
 ## DBMS Support
 
-- MySQL & MariaDB
+- ~~MySQL & MariaDB~~
 - PostgreSQL
-- Amazon Redshift
-- SQLite
-- MongoDB (beta, missing aggregation for now)
+- ~~Amazon Redshift~~
+- ~~SQLite~~
+- ~~MongoDB (beta, missing aggregation for now)~~
 
 ## Features
 
