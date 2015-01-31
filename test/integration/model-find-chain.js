@@ -156,7 +156,6 @@ describe("Model.find() chaining", function() {
 	});
 
 	describe("orderRaw", function () {
-		if (common.protocol() == 'mongodb') return;
 
 		before(setup());
 
@@ -346,8 +345,6 @@ describe("Model.find() chaining", function() {
 			});
 		});
 
-		if (common.protocol() == "mongodb") return;
-
 		it("should ignore sql where conditions", function (done) {
 			Person.find({ age: 18 }).where("LOWER(surname) LIKE 'dea%'").all(function (err, items) {
 				should.equal(err, null);
@@ -482,8 +479,6 @@ describe("Model.find() chaining", function() {
 			});
 		});
 
-		if (common.protocol() == "mongodb") return;
-
 		describe(".hasAccessor() for hasOne associations", function () {
 		    it("should be chainable", function (done) {
 				Person.find({ name: "John" }, function (err, John) {
@@ -531,7 +526,6 @@ describe("Model.find() chaining", function() {
 		};
 
 		it("should fetch all listed associations in a single query", function (done) {
-			if (isMongo()) { return done(); };
 
 			Dog.find({ name: ["Fido", "Thumper"] }).eager("friends").all(function (err, dogs) {
 				should.equal(err, null);
@@ -547,7 +541,6 @@ describe("Model.find() chaining", function() {
 		});
 
 		it("should be able to handle multiple associations", function (done) {
-			if (isMongo()) { return done(); };
 
 			Dog.find({ name: ["Fido", "Thumper"] }).eager("friends", "family").all(function (err, dogs) {
 				should.equal(err, null);
@@ -565,7 +558,6 @@ describe("Model.find() chaining", function() {
 		});
 
 		it("should work with array parameters too", function (done) {
-			if (isMongo()) { return done(); };
 
 			Dog.find({ name: ["Fido", "Thumper"] }).eager(["friends", "family"]).all(function (err, dogs) {
 				should.equal(err, null);
