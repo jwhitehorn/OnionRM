@@ -72,7 +72,7 @@ describe("ORM.connect()", function () {
 	});
 
 	it("should allow protocol alias", function (done) {
-		var db = ORM.connect("pg://127.0.0.2");
+		var db = ORM.connect("pg://127.0.0.1");
 
 		db.once("connect", function (err) {
 			should.exist(err);
@@ -127,7 +127,7 @@ describe("ORM.connect()", function () {
 	});
 
 	it("should emit an error if cannot connect", function (done) {
-		var db = ORM.connect("mysql://fakeuser:nopassword@127.0.0.1/unknowndb");
+		var db = ORM.connect("pg://fakeuser:nopassword@127.0.0.1/unknowndb");
 
 		db.on("connect", function (err) {
 			should.exist(err);
@@ -232,9 +232,9 @@ describe("ORM.connect()", function () {
 
 describe("ORM.use()", function () {
 	it("should be able to use an established connection", function (done) {
-		var db = new sqlite.Database(':memory:');
+		var db = new pg.Client();
 
-		ORM.use(db, "sqlite", function (err) {
+		ORM.use(db, "pg", function (err) {
 			should.not.exist(err);
 
 			return done();
