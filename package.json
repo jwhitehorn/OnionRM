@@ -1,22 +1,12 @@
 {
-	"author"      : "Diogo Resende <dresende@thinkdigital.pt>",
 	"name"        : "orm",
-	"description" : "NodeJS Object-relational mapping",
-	"keywords"    : [
-		"orm",
-		"odm",
-		"database",
-		"mysql",
-		"postgres",
-		"redshift",
-		"sqlite",
-		"mongodb"
-	],
-	"version"     : "2.1.15",
+	"description" : "Onion Relational Mapping",
+	"version"     : "1.0.0",
 	"license"     : "MIT",
-	"homepage"    : "http://dresende.github.io/node-orm2",
-	"repository"  : "http://github.com/dresende/node-orm2.git",
+	"homepage"    : "https://github.com/waterfield/onionrm",
+	"repository"  : "https://github.com/waterfield/onionrm.git",
 	"contributors": [
+		{ "name" : "Diogo Resende",    "email" : "dresende@thinkdigital.pt"},
 		{ "name" : "Bramus Van Damme", "email" : "bramus@bram.us" },
 		{ "name" : "Lorien Gamaroff",  "email" : "lorien@gamaroff.org" },
 		{ "name" : "preslavrachev" },
@@ -25,7 +15,8 @@
 		{ "name" : "David Kosub" },
 		{ "name" : "Arek W",           "email" : "arek01@gmail.com" },
 		{ "name" : "Joseph Gilley",    "email" : "joe.gilley@gmail.com" },
-		{ "name" : "Benjamin Pannell", "email" : "admin@sierrasoftworks.com" }
+		{ "name" : "Benjamin Pannell", "email" : "admin@sierrasoftworks.com" },
+		{ "name" : "Jason Whitehorn",  "email" : "jason.whitehorn@gmail.com" }
 	],
 	"main"        : "./lib/ORM",
 	"scripts"     : {
