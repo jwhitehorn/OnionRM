@@ -433,3 +433,12 @@ age: orm.mod(4)
 ```sql
 where age % 4
 ```
+
+## Anything Else?
+
+Sure, there are tons of awesome features OnionRM inherited from [node-orm2](https://github.com/dresende/node-orm2). However, unless it's outlined in this readme, it's subject to removal as existing code is refactored and Postgres specific functionality is added.
+
+Get in and explore! If there's anything super awesome, submit a pull request, even if it's just to document said feature.
+
+
+:squirrel:
