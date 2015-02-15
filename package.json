@@ -1,5 +1,5 @@
 {
-	"name"        : "orm",
+	"name"        : "onionrm",
 	"description" : "Onion Relational Mapping",
 	"version"     : "1.2.0",
 	"license"     : "MIT",
