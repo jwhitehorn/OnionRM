@@ -1,6 +1,6 @@
 ## Onion Relational Mapping
 
-OnionRM is an ORM for node.js targeting Postgres. OnionRM owes it's existence to [node-orm2](https://github.com/dresende/node-orm2) from which OnionRM forked. 
+OnionRM is an ORM for node.js targeting Postgres. OnionRM owes it's existence to [node-orm2](https://github.com/dresende/node-orm2) from which OnionRM forked.
 
 ## Only Postgres?
 
@@ -15,7 +15,7 @@ Features like JSON, Arrays are natively supported.
 To get started, initialize a connection to Postgres;
 
 ```js
-var orm = require('orm');
+var orm = require('onionrm');
 
 orm.connect("postgres://user@localhost/database", function(err, db){
 	//define models
