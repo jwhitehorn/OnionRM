@@ -329,20 +329,6 @@ describe("Model.find() chaining", function() {
 
 	});
 
-	describe(".each()", function () {
-		before(setup());
-
-		it("should return a ChainInstance", function (done) {
-			var chain = Person.find().each();
-
-			chain.filter.should.be.a("function");
-			chain.sort.should.be.a("function");
-			chain.count.should.be.a("function");
-
-			return done();
-		});
-	});
-
 	describe(".remove()", function () {
 		before(setup());
 
@@ -370,112 +356,6 @@ describe("Model.find() chaining", function() {
 					count.should.equal(2);
 
 					return done();
-				});
-			});
-		});
-	});
-
-	describe(".each()", function () {
-		before(setup());
-
-		it("should return a ChainFind", function (done) {
-			var chain = Person.find({ age: 22 }).each();
-
-			chain.should.be.a("object");
-			chain.filter.should.be.a("function");
-			chain.sort.should.be.a("function");
-			chain.count.should.be.a("function");
-			chain.get.should.be.a("function");
-			chain.save.should.be.a("function");
-
-			return done();
-		});
-
-		describe(".count()", function () {
-			it("should return the total filtered items", function (done) {
-				Person.find().each().filter(function (person) {
-					return (person.age > 18);
-				}).count(function (count) {
-					count.should.equal(1);
-
-					return done();
-				});
-			});
-		});
-
-		describe(".sort()", function () {
-			it("should return the items sorted using the sorted function", function (done) {
-				Person.find().each().sort(function (first, second) {
-					return (first.age < second.age);
-				}).get(function (people) {
-					should(Array.isArray(people));
-
-					people.length.should.equal(3);
-					people[0].age.should.equal(20);
-					people[2].age.should.equal(18);
-
-					return done();
-				});
-			});
-		});
-
-		describe(".save()", function () {
-			it("should save items after changes", function (done) {
-				Person.find({ surname: "Dean" }).each(function (person) {
-					person.age.should.not.equal(45);
-					person.age = 45;
-				}).save(function () {
-					Person.find({ surname: "Dean" }, function (err, people) {
-						should(Array.isArray(people));
-
-						people.length.should.equal(1);
-						people[0].age.should.equal(45);
-
-						return done();
-					});
-				});
-			});
-		});
-
-		describe("if passing a callback", function () {
-			it("should use it to .forEach()", function (done) {
-				Person.find({ surname: "Dean" }).each(function (person) {
-					person.fullName = person.name + " " + person.surname;
-				}).get(function (people) {
-					should(Array.isArray(people));
-
-					people.length.should.equal(1);
-					people[0].fullName = "Jane Dean";
-
-					return done();
-				});
-			});
-		});
-
-		describe(".hasAccessor() for hasOne associations", function () {
-		    it("should be chainable", function (done) {
-				Person.find({ name: "John" }, function (err, John) {
-					should.equal(err, null);
-
-					var Justin = new Person({
-						name : "Justin",
-						age  : 45
-					});
-
-					John[0].setParents([ Justin ], function (err) {
-						should.equal(err, null);
-
-						Person.find().hasParents(Justin).all(function (err, people) {
-						    should.equal(err, null);
-
-							should(Array.isArray(people));
-
-							people.length.should.equal(1);
-							people[0].name.should.equal("John");
-
-							return done();
-						});
-					});
 				});
 			});
 		});
