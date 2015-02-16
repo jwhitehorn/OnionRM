@@ -8,8 +8,7 @@ var ORM      = require('../../');
 
 describe("ORM", function() {
 	describe("when loaded", function () {
-		it("should expose .express(), .use() and .connect()", function (done) {
-			ORM.express.should.a("function");
+		it("should expose .use() and .connect()", function (done) {
 			ORM.use.should.a("function");
 			ORM.connect.should.a("function");
 
