@@ -107,6 +107,17 @@ order.save(function(err){
 });
 ```
 
+Models expose an `isDirty` method for checking if anything has actually changed since the last time it was saved.
+
+```js
+order.isDirty(); //false
+order.status_code = 2;
+order.isDirty(); //true (assuming status_code previously was not 2, false otherwise)
+order.save(function(err){
+
+});
+```
+
 ## Deleting Models
 
 Deletes can be performed in a similar fashion. Simply call `remove` on an OnionRM model instance;
