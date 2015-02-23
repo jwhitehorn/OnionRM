@@ -428,7 +428,7 @@ where created_at between '2015-01-01T06:00:00Z' and '2015-02-01T06:00:00Z'
 ```
 
 ### Any
-The `ANY` operator compares a literally value for equality to any element in an array.
+The `ANY` operator compares a literal value for equality to any element in an array.
 
 ```js
 favorite_foods: orm.any('cookies')
