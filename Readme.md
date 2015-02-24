@@ -445,6 +445,17 @@ age: orm.mod(4)
 where age % 4
 ```
 
+## Model Reconstitution
+You can reconstitute an OnionRM model by calling the `reconstitute` class method with a hash of the instance's properties;
+
+```js
+Customer.reconstitute({name: "Sue"}, function(err, model){
+
+});
+```
+
+It's like soup!
+
 ## Anything Else?
 
 Sure, there are tons of awesome features OnionRM inherited from [node-orm2](https://github.com/dresende/node-orm2). However, unless it's outlined in this readme, it's subject to removal as existing code is refactored and Postgres specific functionality is added.
