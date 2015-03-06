@@ -1,6 +1,6 @@
 ## Onion Relational Mapping
 
-OnionRM is an ORM for node.js targeting Postgres. OnionRM owes it's existence to [node-orm2](https://github.com/dresende/node-orm2) from which OnionRM forked. 
+OnionRM is an ORM for node.js targeting Postgres. OnionRM owes it's existence to [node-orm2](https://github.com/dresende/node-orm2) from which OnionRM forked.
 
 ## Only Postgres?
 
@@ -15,7 +15,7 @@ Features like JSON, Arrays are natively supported.
 To get started, initialize a connection to Postgres;
 
 ```js
-var orm = require('orm');
+var orm = require('onionrm');
 
 orm.connect("postgres://user@localhost/database", function(err, db){
 	//define models
@@ -102,6 +102,17 @@ With a reference to an OnionRM model, you can then perform an update. To update 
 
 ```js
 order.status_code = 2;
+order.save(function(err){
+
+});
+```
+
+Models expose an `isDirty` method for checking if anything has actually changed since the last time it was saved.
+
+```js
+order.isDirty(); //false
+order.status_code = 2;
+order.isDirty(); //true (assuming status_code previously was not 2, false otherwise)
 order.save(function(err){
 
 });
@@ -417,7 +428,7 @@ where created_at between '2015-01-01T06:00:00Z' and '2015-02-01T06:00:00Z'
 ```
 
 ### Any
-The `ANY` operator compares a literally value for equality to any element in an array.
+The `ANY` operator compares a literal value for equality to any element in an array.
 
 ```js
 favorite_foods: orm.any('cookies')
@@ -433,3 +444,23 @@ age: orm.mod(4)
 ```sql
 where age % 4
 ```
+
+## Model Reconstitution
+You can reconstitute an OnionRM model by calling the `reconstitute` class method with a hash of the instance's properties;
+
+```js
+Customer.reconstitute({name: "Sue"}, function(err, model){
+
+});
+```
+
+It's like soup!
+
+## Anything Else?
+
+Sure, there are tons of awesome features OnionRM inherited from [node-orm2](https://github.com/dresende/node-orm2). However, unless it's outlined in this readme, it's subject to removal as existing code is refactored and Postgres specific functionality is added.
+
+Get in and explore! If there's anything super awesome, submit a pull request, even if it's just to document said feature.
+
+
+:squirrel:

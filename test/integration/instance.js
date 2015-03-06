@@ -197,6 +197,7 @@ describe("Model instance", function() {
 
 		it("should mark as dirty with deep paths when setting to different value", function () {
 			should.equal(person.saved(), true);
+			should.equal(person.isDirty(), false);
 			person.set('data.e', 6);
 
 			var expected = clone(data);
@@ -204,6 +205,7 @@ describe("Model instance", function() {
 
 			should.equal(JSON.stringify(person.data), JSON.stringify(expected));
 			should.equal(person.saved(), false);
+			should.equal(person.isDirty(), true);
 			should.equal(person.__opts.changes.join(','), 'data');
 		});
 
@@ -268,8 +270,10 @@ describe("Model instance", function() {
 
 		it("should mark individual properties as dirty", function () {
 			should.equal(person.saved(), true);
+			should.equal(person.isDirty(), false);
 			person.markAsDirty('name');
 			should.equal(person.saved(), false);
+			should.equal(person.isDirty(), true);
 			should.equal(person.__opts.changes.join(','), 'name');
 			person.markAsDirty('data');
 			should.equal(person.__opts.changes.join(','), 'name,data');
