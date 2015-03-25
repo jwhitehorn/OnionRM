@@ -1,5 +1,4 @@
 var _        = require('lodash');
-var sqlite   = require('sqlite3');
 var pg       = require('pg');
 var should   = require('should');
 var helper   = require('../support/spec_helper');
