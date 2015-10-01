@@ -1,7 +1,7 @@
 {
 	"name"        : "onionrm",
 	"description" : "Onion Relational Mapping",
-	"version"     : "1.4.0",
+	"version"     : "1.4.1",
 	"license"     : "MIT",
 	"homepage"    : "https://github.com/waterfield/onionrm",
 	"repository"  : "https://github.com/waterfield/onionrm.git",
