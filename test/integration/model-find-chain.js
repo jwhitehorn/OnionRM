@@ -1,3 +1,4 @@
+var async    = require('async');
 var should   = require('should');
 var helper   = require('../support/spec_helper');
 var ORM      = require('../../');
@@ -7,6 +8,8 @@ describe("Model.find() chaining", function() {
 	var db = null;
 	var Person = null;
 	var Dog = null;
+	var Route = null;
+	var Stop = null;
 
 	var setup = function () {
 		return function (done) {
@@ -61,6 +64,52 @@ describe("Model.find() chaining", function() {
 					friends : [{ name: "Bambi" }],
 					family  : [{ name: "Princess" }, { name: "Butch" }]
 				}], done);
+			});
+		};
+	};
+
+	var setup3 = function () {
+		return function (done) {
+			db.settings.set('instance.cache', false);
+
+			Route = db.define("route", {
+				name : String
+			});
+			Stop = db.define("stop", {
+				name : String,
+				size : Number,
+				access: Number
+			});
+			Stop.hasOne('route', Route, {
+				reverse : 'stops',
+				field   : 'route_id'
+			});
+
+			return helper.dropSync([Route, Stop], function (err) {
+				if (err) return done(err);
+
+				Route.create([
+					{name: 'Route 1'},
+					{name: 'Route 2'},
+				], function (err, routes) {
+					if (err) return done(err);
+
+					async.forEachOf([
+						[
+							{name: 'Route 1 Stop 1', size: 1, access: 1},
+						],
+						[
+							{name: 'Route 2 Stop 1', size: 5, access: 1},
+							{name: 'Route 2 Stop 2', size: 2, access: 2},
+						],
+					], function (stops, index, next) {
+						Stop.create(stops, function (err, stops) {
+							if (err) return done(err);
+
+							routes[index].setStops(stops, next);
+						});
+					}, done);
+				});
 			});
 		};
 	};
@@ -428,4 +477,66 @@ describe("Model.find() chaining", function() {
 		});
 	});
 
+	describe(".join(), .with()", function () {
+		before(setup3());
+
+		it("should find through join", function (done) {
+
+			Route
+			.find()
+			.join('stop', 'route_id', 'id')
+			.with({ size: 5 })
+			.all(function (err, routes) {
+				should.equal(err, null);
+
+				should(Array.isArray(routes));
+
+				routes.length.should.equal(1);
+
+				done();
+			});
+		});
+	});
+
+	describe(".alias", function () {
+		before(setup3());
+
+		it("should find through join with appropriate alias", function (done) {
+
+			Route
+			.find()
+			.join('stop', 'route_id', 'id')
+			.alias('_stop_')
+			.with({ access: 1 })
+			.all(function (err, routes) {
+				should.equal(err, null);
+
+				should(Array.isArray(routes));
+
+				routes.length.should.equal(2);
+
+				done();
+			});
+		});
+
+		it("should find through join with appropriate alias when joining agian to the same table", function (done) {
+
+			Route
+			.find()
+			.join('stop', 'route_id', 'id')
+			.alias('_stop_')
+			.with({ access: 1 })
+			.join('stop', 'route_id', 'id')
+			.with({ size: 5 })
+			.all(function (err, routes) {
+				should.equal(err, null);
+
+				should(Array.isArray(routes));
+
+				routes.length.should.equal(1);
+
+				done();
+			});
+		});
+	});
 });
