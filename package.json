@@ -1,10 +1,10 @@
 {
 	"name"        : "onionrm",
 	"description" : "Onion Relational Mapping",
-	"version"     : "1.5.0",
+	"version"     : "1.5.1",
 	"license"     : "MIT",
-	"homepage"    : "https://github.com/waterfield/onionrm",
-	"repository"  : "https://github.com/waterfield/onionrm.git",
+	"homepage"    : "https://github.com/ScoutGroup/onionrm",
+	"repository"  : "https://github.com/ScoutGroup/onionrm.git",
 	"contributors": [
 		{ "name" : "Diogo Resende",    "email" : "dresende@thinkdigital.pt"},
 		{ "name" : "Bramus Van Damme", "email" : "bramus@bram.us" },
