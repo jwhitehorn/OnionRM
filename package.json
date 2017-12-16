@@ -1,10 +1,10 @@
 {
 	"name"        : "onionrm",
 	"description" : "Onion Relational Mapping",
-	"version"     : "1.5.4",
+	"version"     : "1.6.0",
 	"license"     : "MIT",
-	"homepage"    : "https://github.com/ScoutGroup/onionrm",
-	"repository"  : "https://github.com/ScoutGroup/onionrm.git",
+	"homepage"    : "https://github.com/jwhitehorn/OnionRM",
+	"repository"  : "https://github.com/jwhitehorn/OnionRM.git",
 	"contributors": [
 		{ "name" : "Diogo Resende",    "email" : "dresende@thinkdigital.pt"},
 		{ "name" : "Bramus Van Damme", "email" : "bramus@bram.us" },
@@ -30,7 +30,7 @@
 		"enforce"      : "0.1.6",
 		"hat"          : "0.0.3",
 		"lodash"       : "2.4.1",
-		"pg"           : "4.2.0"
+		"pg"           : "6.1.2"
 	},
 	"devDependencies": {
 		"async"   : "*",
