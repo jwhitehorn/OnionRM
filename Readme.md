@@ -460,7 +460,7 @@ It's like soup!
 
 I'd like to thank Navicat for their sponsorship. Great tools make all of this easier!
 
-![Navicat](Navicat.png)
+[![Navicat](Navicat.png)](http://www.navicat.com/)
 
 ## Anything Else?
 
