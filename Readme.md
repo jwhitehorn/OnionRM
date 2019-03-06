@@ -456,12 +456,6 @@ Customer.reconstitute({name: "Sue"}, function(err, model){
 
 It's like soup!
 
-## Special Thanks
-
-I'd like to thank Navicat for their sponsorship. Great tools make all of this easier!
-
-[![Navicat](Navicat.png)](http://www.navicat.com/)
-
 ## Anything Else?
 
 Sure, there are tons of awesome features OnionRM inherited from [node-orm2](https://github.com/dresende/node-orm2). However, unless it's outlined in this readme, it's subject to removal as existing code is refactored and Postgres specific functionality is added.
